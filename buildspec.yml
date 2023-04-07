@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Building the Lambda functions..."
+      - pwd
+      - cd index-photos
+      - pwd
+      - ls
+      - zip -r ../index-photos.zip *
+      - cd ../search-photos
+      - pwd
+      - ls
+      - zip -r ../search-photos.zip *
+      - cd ..
+      - ls
+      - pwd
+
+  post_build:
+    commands:
+      - pwd
+      - ls
+      - echo "Updating the Lambda functions..."
+      - aws lambda update-function-code --function-name index-photos --zip-file "fileb://index-photos.zip"
+      - aws lambda update-function-code --function-name search-photos --zip-file "fileb://search-photos.zip"
