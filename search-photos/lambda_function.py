@@ -7,6 +7,8 @@ AMAZON_LEX_BOT = "photobot_test"
 LEX_BOT_ALIAS = "test_one"
 USER_ID = "user"
 
+##comment
+
 TABLENAME = 'photos'
 ELASTIC_SEARCH_URL = "https://search-photos-k7c4fhun4s6ceugot6xz4efrbu.us-east-1.es.amazonaws.com/photos/photo/_search?q="
 
