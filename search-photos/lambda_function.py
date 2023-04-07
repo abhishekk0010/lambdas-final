@@ -9,6 +9,7 @@ import uuid
 # from en import singular
 
 #comment added
+#comment 2
 
 AMAZON_LEX_BOT = "photobot_test"
 LEX_BOT_ALIAS = "test_one"
