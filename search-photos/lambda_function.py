@@ -8,6 +8,8 @@ import uuid
 # import inflect
 # from en import singular
 
+#comment added
+
 AMAZON_LEX_BOT = "photobot_test"
 LEX_BOT_ALIAS = "test_one"
 USER_ID = "user"
