@@ -3,11 +3,14 @@ import boto3
 import requests
 import uuid
 
+# import en
+# import pattern.en
+# import inflect
+# from en import singular
+
 AMAZON_LEX_BOT = "photobot_test"
 LEX_BOT_ALIAS = "test_one"
 USER_ID = "user"
-
-##comment
 
 TABLENAME = 'photos'
 ELASTIC_SEARCH_URL = "https://search-photos-k7c4fhun4s6ceugot6xz4efrbu.us-east-1.es.amazonaws.com/photos/photo/_search?q="
@@ -19,7 +22,7 @@ def post_on_lex(query, user_id=USER_ID):
     """
     Get the user input from the frontend as text and pass
     it to lex. Lex will generate a new response.
-    it will return a json response: 
+    it will return a json response:
     https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/lex-runtime.html
     """
 
@@ -53,22 +56,75 @@ def post_on_lex(query, user_id=USER_ID):
 
     a = resp_text
     b = []
+
     b = a.split(",")
     c = b[-1].split(" ")
+    # print(c)
+
     b = b[:-1]
-    if(len(c)>1):
+
+    e = []
+    f = []
+
+    for y in b:
+        if y[-1] == 's':
+            # print(y)
+            y = y[:-1]
+            e.append(y)
+            # print(y)
+        else:
+            e.append(y)
+
+    if (len(c) > 1):
         c.remove("and")
-    labels = b + c
-    print("labels are below")
-    print(labels)
-    ans=""
+    # c.remove("and")
+
+    for y in c:
+        if y[-1] == 's':
+            # print(y)
+            y = y[:-1]
+            f.append(y)
+        else:
+            e.append(y)
+
+    print("f is ")
+    print(f)
+    labels = e + f
+    # print(d)
+
+    ans = ""
     for x in labels:
-        ans+='labels:'+x
+        ans += 'labels:' + x + '+'
     print("ans are below")
+
     print(ans)
     return ans
 
 
+##############
+
+# b = a.split(",")
+# c = b[-1].split(" ")
+# b = b[:-1]
+# if(len(c)>1):
+#     c.remove("and")
+# labels = b + c
+# print("labels are below")
+# print(labels)
+
+# # single_words = [singular(x) for x in labels]
+
+
+# ans=""
+# for x in labels:
+#     ans+='labels:'+x+'+'
+# print("ans are below")
+
+
+# print(ans)
+# return ans
+
+############
 
 def get_photos_ids(URL, labels):
     """
